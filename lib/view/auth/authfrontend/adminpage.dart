@@ -1,16 +1,12 @@
-
 import 'package:flutter/material.dart';
-import 'package:flutter_signin_button/flutter_signin_button.dart';
-import 'package:sdmitplacement/view/auth/authfrontend/adminpage.dart';
-import 'package:sdmitplacement/view/auth/authfrontend/signupPage.dart';
 
-class LoginPage extends StatefulWidget {
+class AdminPage extends StatefulWidget {
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _AdminPageState createState() => _AdminPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
-  bool emailtrue = true, passwordtrue = true, showpassword = true;
+class _AdminPageState extends State<AdminPage> {
+   bool emailtrue = true, passwordtrue = true, showpassword = true;
   String email, password;
   @override
   Widget build(BuildContext context) {
@@ -95,20 +91,7 @@ class _LoginPageState extends State<LoginPage> {
                         labelText: "password"),
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8.0, right: 15.0),
-                      child: GestureDetector(
-                        onTap: () {
-                          print("forget password");
-                        },
-                        child: Text("Forget password"),
-                      ),
-                    )
-                  ],
-                ),
+               
                 Padding(
                   padding: const EdgeInsets.only(top: 17.0),
                   child: GestureDetector(
@@ -123,44 +106,13 @@ class _LoginPageState extends State<LoginPage> {
                             borderRadius: BorderRadius.circular(10.0),
                             color: Colors.white),
                         child: Align(
-                            alignment: Alignment.center, child: Text("Signin")),
+                            alignment: Alignment.center, child: Text("Login")),
                       ),
                     ),
                   ),
                 ),
-                Row(
-                  // crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text("Create a new account ?"),
-                    Padding(
-                        padding: EdgeInsets.all(5.0),
-                        child: FlatButton(
-                            onPressed: () {
-                              Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => SignupPage()));
-                            },
-                            child: Text("signup"))),
-                  ],
-                ),
-                Container(
-                  decoration:
-                      BoxDecoration(borderRadius: BorderRadius.circular(10.0)),
-                  child: SignInButton(
-                    Buttons.Google,
-                    text: "Signin with Google",
-                    onPressed: () {},
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (context) => AdminPage()));
-                  },
-                  child: Text("login as admin"),
-                ),
+                
+              
               ],
             ),
           ),
