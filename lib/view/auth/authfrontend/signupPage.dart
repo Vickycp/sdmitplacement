@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sdmitplacement/view/auth/authbackend/connections.dart';
 import 'package:sdmitplacement/view/auth/authfrontend/signinPage.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 
@@ -8,10 +9,18 @@ class SignupPage extends StatefulWidget {
 }
 
 class _SignupPageState extends State<SignupPage> {
+    //emailtrue is used for hiding the hintText in the text field
+  //password is also same as hiding the hintText of password textfield
+  //showpassword is used to invisible the password for text field
+  //usernametrue is used to hiding the hinttext in the textfield 
   bool usernametrue = true,
       emailtrue = true,
       passwordtrue = true,
       showpassword = true;
+        //email variable is initilisation for storing the email of the user 
+  //password variable is initilisation for store the password of the user
+  //confirmpassword is initilisation to store the user confirm password
+  //username is initilisation for store the username 
   String email, password, confirmpassword, username;
   @override
   Widget build(BuildContext context) {
@@ -30,6 +39,7 @@ class _SignupPageState extends State<SignupPage> {
                 Padding(
                   padding: const EdgeInsets.only(top: 20.0),
                   child: Center(
+                    //log of college
                     child: FlutterLogo(
                       size: 100,
                     ),
@@ -41,6 +51,7 @@ class _SignupPageState extends State<SignupPage> {
                 Padding(
                   padding:
                       const EdgeInsets.only(top: 10.0, left: 20.0, right: 20.0),
+                      //textfields for username
                   child: TextField(
                     onChanged: (value) {
                       username = value;
@@ -60,6 +71,7 @@ class _SignupPageState extends State<SignupPage> {
                         labelText: "username"),
                   ),
                 ),
+                // text field for email
                 Padding(
                   padding:
                       const EdgeInsets.only(top: 10.0, left: 20.0, right: 20.0),
@@ -82,6 +94,7 @@ class _SignupPageState extends State<SignupPage> {
                         labelText: "example@sdmit.in"),
                   ),
                 ),
+                //text field for password
                 Padding(
                   padding:
                       const EdgeInsets.only(top: 10.0, left: 20.0, right: 20.0),
@@ -116,6 +129,7 @@ class _SignupPageState extends State<SignupPage> {
                         labelText: "password"),
                   ),
                 ),
+                //text field for confirm password
                 Padding(
                   padding:
                       const EdgeInsets.only(top: 10.0, left: 20.0, right: 20.0),
@@ -139,11 +153,14 @@ class _SignupPageState extends State<SignupPage> {
                         labelText: "confirm password"),
                   ),
                 ),
+                //signup button
                 Padding(
                   padding: const EdgeInsets.only(top: 20.0),
                   child: GestureDetector(
                     onTap: () {
                       print("$email,$password,$confirmpassword,$username");
+                      // singup() methos is a property od connections class
+                      Connections().signup(email: email, password: password,username: username);
                     },
                     child: Center(
                       child: Container(
@@ -159,7 +176,7 @@ class _SignupPageState extends State<SignupPage> {
                   ),
                 ),
                 Row(
-                  // crossAxisAlignment: CrossAxisAlignment.center,
+               
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text("Already hav a  account ?"),
@@ -175,10 +192,13 @@ class _SignupPageState extends State<SignupPage> {
                             child: Text("signin"))),
                   ],
                 ),
+                //sigup with google account
                 SignInButton(
                   Buttons.Google,
                   text: "Signup with Google",
-                  onPressed: () {},
+                  onPressed: () {
+                    Connections().signupgoogle();
+                  },
                 ),
               ],
             ),

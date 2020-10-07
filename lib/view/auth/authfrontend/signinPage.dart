@@ -10,11 +10,17 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  //emailtrue is used for hiding the hintText in the text field
+  //password is also same as hiding the hintText of password textfield
+  //showpassword is used to invisible the password for text field
   bool emailtrue = true, passwordtrue = true, showpassword = true;
+  //email variable is initilisation for storing the email of the user 
+  //password variable is initilisation for store the password of the user
   String email, password;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //container with lightblueaccent color
       body: Container(
         padding: EdgeInsets.only(top: 50),
         decoration: BoxDecoration(
@@ -23,6 +29,7 @@ class _LoginPageState extends State<LoginPage> {
               end: Alignment.bottomLeft,
               colors: [Colors.blueGrey, Colors.lightBlueAccent]),
         ),
+        // listview is used for scrolling effects of the text fields
         child: ListView(children: [
           Container(
             alignment: Alignment.center,
@@ -30,6 +37,7 @@ class _LoginPageState extends State<LoginPage> {
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.only(top: 20.0),
+                  //log  of the college
                   child: Center(
                     child: FlutterLogo(
                       size: 100,
@@ -42,6 +50,7 @@ class _LoginPageState extends State<LoginPage> {
                 Padding(
                   padding:
                       const EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
+                      //email Textfield 
                   child: TextField(
                     onChanged: (value) {
                       email = value;
@@ -64,6 +73,7 @@ class _LoginPageState extends State<LoginPage> {
                 Padding(
                   padding:
                       const EdgeInsets.only(top: 10.0, left: 20.0, right: 20.0),
+                      // text field for password
                   child: TextField(
                     autofocus: false,
                     onChanged: (value) {
@@ -95,6 +105,7 @@ class _LoginPageState extends State<LoginPage> {
                         labelText: "password"),
                   ),
                 ),
+                // forget password section
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -109,6 +120,7 @@ class _LoginPageState extends State<LoginPage> {
                     )
                   ],
                 ),
+                // siginin button this contains a method sigini() 
                 Padding(
                   padding: const EdgeInsets.only(top: 17.0),
                   child: GestureDetector(
@@ -128,8 +140,9 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                 ),
+                //navigation to sigup page 
                 Row(
-                  // crossAxisAlignment: CrossAxisAlignment.center,
+               
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text("Create a new account ?"),
@@ -145,6 +158,7 @@ class _LoginPageState extends State<LoginPage> {
                             child: Text("signup"))),
                   ],
                 ),
+                // google signin 
                 Container(
                   decoration:
                       BoxDecoration(borderRadius: BorderRadius.circular(10.0)),
@@ -154,6 +168,7 @@ class _LoginPageState extends State<LoginPage> {
                     onPressed: () {},
                   ),
                 ),
+                //navigation to admin page 
                 GestureDetector(
                   onTap: () {
                     Navigator.pushReplacement(context,
