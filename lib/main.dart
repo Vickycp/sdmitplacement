@@ -1,6 +1,12 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:sdmitplacement/view/auth/authfrontend/signinPage.dart';
+import 'package:provider/provider.dart';
+import 'package:sdmitplacement/streams/firstcontollerbloc.dart';
+import 'package:sdmitplacement/streams/listofblocs.dart';
+import 'package:sdmitplacement/streams/secondcontrollerbloc.dart';
+import 'package:sdmitplacement/view/auth/authcontroller.dart';
+
+import 'package:sdmitplacement/view/controller/controller.dart';
 
 Future<void> main() async{
    WidgetsFlutterBinding.ensureInitialized();
@@ -18,7 +24,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home:LoginPage(),
-    );
+      home:MultiProvider(
+        providers: ListofBloc.allbloc(),
+        child: Controller()));
   }
 }
