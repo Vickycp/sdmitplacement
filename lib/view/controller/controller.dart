@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sdmitplacement/streams/rep.dart';
 
 import 'package:sdmitplacement/view/auth/bloc/authbloc_bloc.dart';
-import 'package:sdmitplacement/view/auth/loginpage.dart';
-import 'package:sdmitplacement/view/auth/signuppage.dart';
+import 'package:sdmitplacement/view/auth/loginpages/loginpage.dart';
+import 'package:sdmitplacement/view/auth/signuppage/signuppage.dart';
 import 'package:sdmitplacement/view/home/homescreen.dart';
+import 'package:sdmitplacement/widgeds/loading.dart';
 
 class Controller extends StatefulWidget {
   @override
@@ -13,21 +13,20 @@ class Controller extends StatefulWidget {
 }
 
 class _ControllerState extends State<Controller> {
-
   @override
   void initState() {
     super.initState();
-  
   }
 
   @override
   Widget build(BuildContext context) {
-
     return BlocConsumer<AuthblocBloc, AuthblocState>(
       listener: (context, state) {},
       builder: (context, state) {
+        if (state is Loading) {
+          return loading();
+        }
         if (state is AuthblocInitial) {
-     
           return Center(
             child: CircularProgressIndicator(),
           );

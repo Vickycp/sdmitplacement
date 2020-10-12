@@ -25,3 +25,9 @@ class Createsubmit extends AuthblocEvent {
 }
 
 class Appstarted extends AuthblocEvent{}
+
+
+class Loadingevent extends AuthblocEvent{}
+class Userauthsuccess extends AuthblocEvent{}
+
+class Logoutevent extends AuthblocEvent{}

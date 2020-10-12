@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:meta/meta.dart';
 import 'package:sdmitplacement/streams/rep.dart';
 
@@ -35,13 +35,33 @@ class AuthblocBloc extends Bloc<AuthblocEvent, AuthblocState> {
     if (event is Createsubmit) {
       yield Userpresent();
     }
+    if (event is Loadingevent) {
+      yield Loading();
+    }
+    if (event is Userauthsuccess) {
+      yield Userpresent();
+    }
+    if (event is Logoutevent) {
+      yield* logoutstates();
+    }
+  }
+
+  Stream<AuthblocState> logoutstates() async* {
+     yield Loading();
+    _userRepository.signOut();
+    yield Authlogin();
   }
 
   Stream<AuthblocState> _checkingUser() async* {
+    yield Loading();
     if (_userRepository.isSignedIn()) {
+      yield Loading();
+      await Future.delayed(Duration(milliseconds: 500));
       yield Userpresent();
     } else {
-      yield Authsignup();
+      yield Loading();
+      await Future.delayed(Duration(milliseconds: 500));
+      yield Authlogin();
     }
   }
 }

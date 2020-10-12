@@ -5,7 +5,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 class Connections {
   FirebaseAuth auth = FirebaseAuth.instance;
   FirebaseFirestore _store = FirebaseFirestore.instance;
-  UserCredential _userCredential;
+  
   final GoogleSignIn _googleSignIn = GoogleSignIn();
   signin({email, password}) async {
     await auth

@@ -12,3 +12,6 @@ class Userpresent extends AuthblocState {}
 class Authlogin extends AuthblocState {}
 
 class Authsignup extends AuthblocState {}
+
+class Loading extends AuthblocState {}
+
