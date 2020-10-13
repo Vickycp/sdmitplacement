@@ -9,11 +9,8 @@ import 'package:sdmitplacement/view/auth/bloc/authbloc_bloc.dart';
 
 class Loginbloc {
   FirebaseAuth _auth = FirebaseAuth.instance;
-  
+
   final GoogleSignIn _googleSignIn = GoogleSignIn();
-
-
-
 
   final _emailcontroller = BehaviorSubject<String>();
   final BehaviorSubject _passwordcontroller = BehaviorSubject<String>();
@@ -77,19 +74,18 @@ class Loginbloc {
     );
     await _auth.signInWithCredential(credential).then((value) {
       _showerrors.sink.add(value.user.email);
-       _googleloading.sink.add(false);
+      _googleloading.sink.add(false);
       BlocProvider.of<AuthblocBloc>(context).add(Userauthsuccess());
     }).catchError((error) {
       _showerrors.sink.addError(error.code);
-       _googleloading.sink.add(false);
+      _googleloading.sink.add(false);
     });
-     _googleloading.sink.add(false);
+    _googleloading.sink.add(false);
   }
 
   final emailvalidation = StreamTransformer<String, String>.fromHandlers(
     handleData: (email, sink) {
       bool isEmail(String email) {
-        // print(email);
         String p =
             r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
 
