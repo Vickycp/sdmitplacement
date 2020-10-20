@@ -53,25 +53,26 @@ class SignupBloc {
   }
 
   signup(BuildContext context) async {
-    _loading.sink.add(true);
-    await _auth
-        .createUserWithEmailAndPassword(
-            email: _email.value, password: _password.value)
-        .then((value) async {
-      _signupsucess.sink.add((value.user).email);
+     BlocProvider.of<AuthblocBloc>(context).add(Detailsevent());
+    // _loading.sink.add(true);
+    // await _auth
+    //     .createUserWithEmailAndPassword(
+    //         email: _email.value, password: _password.value)
+    //     .then((value) async {
+    //   _signupsucess.sink.add((value.user).email);
 
-      await _firestore.collection('studentcredential').doc().set({
-        'email': _email.value,
-        'password': _password.value,
-        'username': _username.value,
-        'usn': _usn.value
-      });
-      BlocProvider.of<AuthblocBloc>(context).add(Userauthsuccess());
-    }).catchError((error) {
-      _signupsucess.sink.addError(error.code);
-      _loading.sink.add(false);
-    });
-    _loading.sink.add(false);
+    //   await _firestore.collection('studentcredential').doc().set({
+    //     'email': _email.value,
+    //     'password': _password.value,
+    //     'username': _username.value,
+    //     'usn': _usn.value
+    //   });
+    //  BlocProvider.of<AuthblocBloc>(context).add(Detailsevent());
+    // }).catchError((error) {
+    //   _signupsucess.sink.addError(error.code);
+    //   _loading.sink.add(false);
+    // });
+    // _loading.sink.add(false);
   }
 
   googlesignup(BuildContext context) async {
@@ -95,7 +96,7 @@ class SignupBloc {
         'username':(value.user).displayName,
         'usn': (value.user).displayName
       });
-       BlocProvider.of<AuthblocBloc>(context).add(Userauthsuccess());
+       BlocProvider.of<AuthblocBloc>(context).add(Detailsevent());
 
         })
         .catchError((error) {

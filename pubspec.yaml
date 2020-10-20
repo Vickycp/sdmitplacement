@@ -36,6 +36,8 @@ dependencies:
   provider: ^4.3.2+2
   rxdart: ^0.24.1
   shared_preferences: ^0.5.12
+  google_fonts: ^1.1.1
+ 
 
 dev_dependencies:
   flutter_test:

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 
-import 'package:sdmitplacement/streams/secondcontrollerbloc.dart';
+
 import 'package:sdmitplacement/view/auth/bloc/authbloc_bloc.dart';
 import 'package:sdmitplacement/view/auth/loginpages/loginbloc.dart';
 import 'package:sdmitplacement/widgeds/errorwidgets.dart';
@@ -88,7 +88,7 @@ class _LoginPageState extends State<LoginPage> {
                                       color: Colors.black,
                                     )
                                   : Icon(
-                                      Icons.remove_red_eye_outlined,
+                                      Icons.remove_red_eye,
                                       color: Colors.white,
                                     ),
                               onPressed: () {

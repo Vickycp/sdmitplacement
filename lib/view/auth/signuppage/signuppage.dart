@@ -138,7 +138,7 @@ class _SignupPageState extends State<SignupPage> {
                                         color: Colors.black,
                                       )
                                     : Icon(
-                                        Icons.remove_red_eye_outlined,
+                                        Icons.remove_red_eye,
                                         color: Colors.white,
                                       ),
                                 onPressed: () {
@@ -193,7 +193,7 @@ class _SignupPageState extends State<SignupPage> {
                     const EdgeInsets.only(left: .0, right: 10.0, top: 10.0),
                 child: StreamBuilder(
                     stream: _signupBloc.enable,
-                    initialData: false,
+                    initialData: true,
                     builder: (context, snapshot) {
                       return GestureDetector(
                         onTap: (snapshot.data == true)

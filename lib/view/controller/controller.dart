@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sdmitplacement/view/Details/details.dart';
+import 'package:sdmitplacement/view/Details/semdetails.dart';
 
 import 'package:sdmitplacement/view/auth/bloc/authbloc_bloc.dart';
 import 'package:sdmitplacement/view/auth/loginpages/loginpage.dart';
@@ -31,8 +33,15 @@ class _ControllerState extends State<Controller> {
             child: CircularProgressIndicator(),
           );
         }
+        if (state is DetailsState) {
+          return Details();
+        }
+        if(state is SemDetailsState){
+          return Semdetails(sem: state.sem);
+        }
         if (state is Userpresent) {
           return HomeScreen();
+          // return Details();
         }
         if (state is Authlogin) {
           return LoginPage();

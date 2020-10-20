@@ -44,10 +44,16 @@ class AuthblocBloc extends Bloc<AuthblocEvent, AuthblocState> {
     if (event is Logoutevent) {
       yield* logoutstates();
     }
+    if (event is Detailsevent) {
+      yield DetailsState();
+    }
+    if (event is SemDetailsevent) {
+      yield SemDetailsState(sem: event.sem);
+    }
   }
 
   Stream<AuthblocState> logoutstates() async* {
-     yield Loading();
+    yield Loading();
     _userRepository.signOut();
     yield Authlogin();
   }
